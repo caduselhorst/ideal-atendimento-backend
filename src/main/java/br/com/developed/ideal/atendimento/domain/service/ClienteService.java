@@ -65,7 +65,7 @@ public class ClienteService {
 		
 		return Cliente.builder()
 				.bairro(clienteApi.getClifatbairro())
-				.cep(clienteApi.getClifatbairro())
+				.cep(clienteApi.getClifatcep())
 				.cidade(clienteApi.getClifatcidade())
 				.codIbge(clienteApi.getClifatcidcodibge())
 				.documento(clienteApi.getClicpfcgc())
