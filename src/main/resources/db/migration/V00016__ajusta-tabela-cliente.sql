@@ -1,0 +1,1 @@
+alter table cliente modify cep varchar(15);
