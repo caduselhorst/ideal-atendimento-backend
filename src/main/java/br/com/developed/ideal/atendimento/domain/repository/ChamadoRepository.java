@@ -75,6 +75,7 @@ public interface ChamadoRepository
 				COUNT(*) AS quantidade
 			FROM chamado
 			WHERE data_abertura >= :dataAbertura
+				and data_fechamento is not null
 			GROUP BY dia
 			ORDER BY dia
 			""")
