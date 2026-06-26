@@ -28,7 +28,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ResourceServerConfig {
 	
 	private static final String[] WHITE_LIST_URLS = {"/autenticacao", "/home", 
-			"/publico/**", "/publico/agendamento/**", "/flowable-modeler", "/flowable-modeler/**"};
+			"/publico/**", "/publico/agendamento/**", "/flowable-modeler", "/flowable-modeler/**", "/chat/**", "/httpwebhook", "/workflow/**"};
 	
 	@Bean
 	SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {

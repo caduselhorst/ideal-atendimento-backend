@@ -15,5 +15,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	public Page<Usuario> findByNomeContainingIgnoreCase(Pageable pageable, String nome);
 	public boolean existsByLoginIgnoreCase(String login);
 	public List<Usuario> findByInativoOrderByNome(Boolean inativo);
-
+	public List<Usuario> findByHabilitaNotificacaoWhatsapp(Boolean habilitaNotificacao);
+	
 }

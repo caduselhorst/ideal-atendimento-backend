@@ -16,7 +16,6 @@ import br.com.developed.ideal.atendimento.api.model.ResetSenhaModel;
 import br.com.developed.ideal.atendimento.api.model.input.UsuarioInput;
 import br.com.developed.ideal.atendimento.domain.exception.GrupoUsuarioNaoEncontradoException;
 import br.com.developed.ideal.atendimento.domain.exception.NegocioException;
-import br.com.developed.ideal.atendimento.domain.exception.ResetSenhaNaoEncontradoException;
 import br.com.developed.ideal.atendimento.domain.exception.UsuarioNaoEncontradoException;
 import br.com.developed.ideal.atendimento.domain.model.Constantes;
 import br.com.developed.ideal.atendimento.domain.model.GrupoUsuario;
@@ -231,38 +230,7 @@ public class UsuarioService {
 		
 	}
 	
-	
-
-	@Transactional
-	public void resetaSenha(String id, String codigo) {
 		
-		ResetSenha resetSenha = resetSenhaRepository.findByIdAndExecutado(id, false)
-				.orElseThrow(() -> new ResetSenhaNaoEncontradoException(id));
-		
-		OffsetDateTime agora = OffsetDateTime.now();
-		
-		if (agora.compareTo(resetSenha.getDataValidade()) < 0) {
-			
-			Usuario usuario = buscarOuFalhar(resetSenha.getUsuario().getId());
-			
-			String novaSenha = AppUtils.generateRandomString(6);
-			
-			usuario.setSenha(passwordEncoder.encode(novaSenha));
-			
-			resetSenha.setExecutado(true);
-
-			usuario = usuarioRepository.save(usuario);
-			resetSenha = resetSenhaRepository.save(resetSenha);
-			
-			
-		} else {
-			throw new NegocioException("Código de reset de senha expirado. Reinicie o processo de redefinição de senha");
-		}
-				
-		
-	}
-	
-	
 	
 	@Transactional
 	public void redefinirSenha(Long usuarioId) {
@@ -270,6 +238,8 @@ public class UsuarioService {
 		Usuario usuario = buscarOuFalhar(usuarioId);
 		
 		usuario.alteraSenha(passwordEncoder.encode(Constantes.SENHA_PADRAO));
+		
+		usuarioRepository.save(usuario);
 		
 	}
 	

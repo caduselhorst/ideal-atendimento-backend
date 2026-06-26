@@ -1,0 +1,1 @@
+alter table chamado add fone_abertura varchar(20) not null;

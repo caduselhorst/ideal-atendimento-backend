@@ -27,6 +27,7 @@ public class ModelMapperConfig {
 		
 		modelMapper.createTypeMap(GrupoUsuarioInput.class, GrupoUsuario.class)
 			.addMappings(mapper -> mapper.skip(GrupoUsuario::setId));
+		
 				
 		return modelMapper;
 		

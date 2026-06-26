@@ -18,7 +18,7 @@ public @interface CheckSecurity {
 	
 	public @interface Permissoes {
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_LER_PERMISSOES')")
+		@PreAuthorize("isAuthenticated and hasAuthority('PERMISSOES_PERMITE_LER')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PodeConsultar {
@@ -28,25 +28,25 @@ public @interface CheckSecurity {
 	
 	public @interface Perfis {
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_CRIAR_PERFIS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('PERFIS_PERMITE_CRIAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteCriar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_ALTERAR_PERFIS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('PERFIS_PERMITE_ALTERAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteAlterar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_EXCLUIR_PERFIS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('PERFIS_PERMITE_EXCLUIR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteExcluir {
 		}
 
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_LER_PERFIS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('PERFIS_PERMITE_LER')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteConsultar {
@@ -56,25 +56,25 @@ public @interface CheckSecurity {
 	
 	public @interface Usuarios {
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_CRIAR_USUARIOS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('USUARIOS_PERMITE_CRIAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteCriar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_ALTERAR_USUARIOS') or @pgeSecurity.permiteVisualizarCadastroUsuario(#usuarioId)")
+		@PreAuthorize("isAuthenticated and hasAuthority('USUARIOS_PERMITE_ALTERAR') or @lgssSecurity.permiteVisualizarCadastroUsuario(#usuarioId)")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteAlterar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_EXCLUIR_USUARIOS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('USUSARIOS_PERMITE_EXCLUIR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteExcluir {
 		}
 
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_LER_USUARIOS') or @pgeSecurity.permiteVisualizarCadastroUsuario(#usuarioId)")
+		@PreAuthorize("isAuthenticated and hasAuthority('USUARIOS_PERMITE_LER') or @lgssSecurity.permiteVisualizarCadastroUsuario(#usuarioId)")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteConsultar {
@@ -85,25 +85,25 @@ public @interface CheckSecurity {
 	
 	public @interface GruposUsuario {
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_CRIAR_GRUPOS_USUARIO')")
+		@PreAuthorize("isAuthenticated and hasAuthority('GRUPOS_USUARIO_PERMITE_CRIAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteCriar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_ALTERAR_GRUPOS_USUARIO')")
+		@PreAuthorize("isAuthenticated and hasAuthority('GRUPOS_USUARIO_PERMITE_ALTERAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteAlterar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_EXCLUIR_GRUPOS_USUARIO')")
+		@PreAuthorize("isAuthenticated and hasAuthority('GRUPOS_USUARIO_PERMITE_EXCLUIR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteExcluir {
 		}
 
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_LER_GRUPOS_USUARIO')")
+		@PreAuthorize("isAuthenticated and hasAuthority('GRUPOS_USUARIO_PERMITE_LER')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteConsultar {
@@ -111,27 +111,27 @@ public @interface CheckSecurity {
 		
 	}
 	
-	public @interface Processos {
+	public @interface Mensagens {
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_CRIAR_PROCESSOS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('MENSAGENS_PERMITE_CRIAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteCriar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_ALTERAR_PROCESSOS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('MENSAGENS_PERMITE_ALTERAR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteAlterar {
 		}
 		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_EXCLUIR_PROCESSOS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('MENSAGENS_PERMITE_EXCLUIR')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteExcluir {
 		}
 
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_LER_PROCESSOS')")
+		@PreAuthorize("isAuthenticated and hasAuthority('MENSAGENS_PERMITE_LER')")
 		@Retention(RUNTIME)
 		@Target(METHOD)
 		public @interface PermiteConsultar {
@@ -139,32 +139,6 @@ public @interface CheckSecurity {
 		
 	}
 	
-	public @interface Formularios {
-		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_CRIAR_FORMULARIOS')")
-		@Retention(RUNTIME)
-		@Target(METHOD)
-		public @interface PermiteCriar {
-		}
-		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_ALTERAR_FORMULARIOS')")
-		@Retention(RUNTIME)
-		@Target(METHOD)
-		public @interface PermiteAlterar {
-		}
-		
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_EXCLUIR_FORMULARIOS')")
-		@Retention(RUNTIME)
-		@Target(METHOD)
-		public @interface PermiteExcluir {
-		}
 
-		@PreAuthorize("isAuthenticated and hasAuthority('PERMITE_LER_FORMULARIOS')")
-		@Retention(RUNTIME)
-		@Target(METHOD)
-		public @interface PermiteConsultar {
-		}
-		
-	}
 
 }

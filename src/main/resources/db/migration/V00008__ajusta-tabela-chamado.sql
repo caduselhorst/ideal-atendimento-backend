@@ -1,0 +1,1 @@
+alter table chamado add assunto varchar(255) not null;

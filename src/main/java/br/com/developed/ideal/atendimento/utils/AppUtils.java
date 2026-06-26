@@ -5,6 +5,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
+import org.apache.tika.mime.MimeType;
+import org.apache.tika.mime.MimeTypeException;
+import org.apache.tika.mime.MimeTypes;
+
 public class AppUtils {
 	
 	public static String toMD5(String input) {
@@ -58,6 +62,25 @@ public class AppUtils {
         }
 
         return randomString.toString();
+    }
+    
+    public static String getExtensaoArquivoPeloMimeType(String mimeType) {
+    	
+    	try {
+    		
+    		if (mimeType.startsWith("audio/ogg")) {
+    			return ".ogg";
+    		}
+    		
+	    	MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
+	    	MimeType mime = allTypes.forName(mimeType);
+	    	
+	    	return mime.getExtension();
+	    	
+    	} catch (MimeTypeException e) {
+    		throw new RuntimeException("Não foi possível definir a extensão do arquivo para o tipo " + mimeType);
+    	}
+    	
     }
 
 }
